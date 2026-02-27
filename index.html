@@ -330,9 +330,29 @@
             color: var(--accent-color);
         }
 
+        .owner-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .owner-profile img {
+            width: 180px; /* Tamaño de la imagen de Rocio */
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%; /* Hacer la imagen redonda */
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(26, 188, 156, 0.7);
+        }
+
         .owner-info p {
             font-size: 1.2rem;
             margin-bottom: 1rem;
+            max-width: 800px; /* Limitar el ancho del texto para mejor legibilidad */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-methods {
@@ -557,10 +577,13 @@
     <section id="nosotros" class="owner-info">
         <div class="container">
             <h3>Sobre Ocean Beauty</h3>
-            <p>Soy Rocio Guerra, la creadora y apasionada detrás de Ocean Beauty.</p>
+            <div class="owner-profile">
+                <!-- Aquí se ha añadido la imagen de Rocio -->
+                <img src="https://i.ibb.co/Kpmf7vfY/IMG-20260227-WA0011.jpg" alt="Rocio Guerra">
+                <p>Soy Rocio Guerra, la creadora y apasionada detrás de Ocean Beauty.</p>
+            </div>
             <p>Nuestra tienda online nace en San Carlos-Cojedes con la visión de ofrecer prendas de calidad que celebren la feminidad y el estilo único de cada mujer. Creemos que la belleza reside en la confianza y en cómo te sientes con lo que vistes.</p>
             <p>Gracias por formar parte de nuestra comunidad. ¡Te invitamos a explorar y encontrar tu pieza favorita!</p>
-            <p></p>
         </div>
     </section>
 
