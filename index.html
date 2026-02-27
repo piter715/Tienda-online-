@@ -1,3 +1,5 @@
+--- START OF FILE index.html ---
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,14 +20,24 @@
             --gradient-end: #1abc9c;
         }
 
+        /* --- NUEVAS REGLAS GLOBALES PARA EVITAR SCROLL HORIZONTAL --- */
+        html, body {
+            overflow-x: hidden; /* Evita el scroll horizontal en toda la página */
+            width: 100%; /* Asegura que el body no exceda el ancho del viewport */
+            margin: 0; /* Reinicia márgenes por si acaso */
+            padding: 0; /* Reinicia paddings por si acaso */
+        }
+        /* --- FIN DE NUEVAS REGLAS GLOBALES --- */
+
+
         body {
             font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
+            /* margin: 0;  Ya se movió a html, body */
+            /* padding: 0; Ya se movió a html, body */
             background-color: var(--text-light);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
+            /* overflow-x: hidden; Ya se movió a html, body */
         }
 
         header {
@@ -42,6 +54,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            /* Añadir box-sizing para evitar problemas con padding */
+            box-sizing: border-box;
         }
 
         .logo-section {
@@ -115,6 +129,9 @@
             flex-direction: column;
             justify-content: center;
             min-height: 500px;
+            /* Asegurar que el contenido del hero no cause desbordamiento */
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .hero h2 {
@@ -180,6 +197,9 @@
             gap: 2rem;
             flex-wrap: wrap;
             margin-top: 3rem;
+            /* Asegurar que los cards no se desborden por el padding */
+            box-sizing: border-box;
+            padding: 0 1rem; /* Añadir un pequeño padding para móviles si los cards no tienen margen */
         }
 
         .card {
@@ -193,6 +213,9 @@
             position: relative;
             overflow: hidden;
             border: 1px solid #eee;
+            /* Asegurar que el card no se desborde */
+            box-sizing: border-box;
+            max-width: 100%; /* Imprescindible para evitar desbordamiento */
         }
 
         .card::before {
@@ -224,11 +247,82 @@
             color: #555;
         }
 
+        /* Estilos para la nueva sección de productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            /* Asegurar que el grid no se desborde */
+            box-sizing: border-box;
+            padding: 0 1rem; /* Añadir un pequeño padding si no hay margen en los items */
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+            /* Asegurar que el card no se desborde */
+            box-sizing: border-box;
+            max-width: 100%; /* Imprescindible para evitar desbordamiento */
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-card-content {
+            padding: 1.5rem;
+        }
+
+        .product-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-card .btn {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+            border-radius: 20px;
+        }
+
+        .product-card .btn:hover {
+            background-color: #2a61c7;
+            transform: translateY(-2px);
+        }
+
+
         .owner-info {
             background-color: var(--primary-color);
             color: var(--text-light);
             padding: 3rem 1.5rem;
             text-align: center;
+            /* Asegurar que el owner-info no se desborde */
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .owner-info h3 {
@@ -249,6 +343,9 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-top: 2rem;
+            /* Asegurar que los métodos de contacto no se desborden */
+            box-sizing: border-box;
+            padding: 0 1rem;
         }
 
         .contact-method {
@@ -263,6 +360,9 @@
             align-items: center;
             gap: 0.5rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Asegurar que el método de contacto no se desborde */
+            box-sizing: border-box;
+            max-width: 100%; /* Para que el botón no se estire más de lo debido */
         }
 
         .contact-method:hover {
@@ -281,6 +381,9 @@
             text-align: center;
             padding: 2rem 0;
             font-size: 0.9rem;
+            /* Asegurar que el footer no se desborde */
+            box-sizing: border-box;
+            width: 100%;
         }
 
         footer p {
@@ -304,10 +407,11 @@
             .info-cards {
                 flex-direction: column;
                 align-items: center;
+                gap: 1.5rem; /* Ajustar el espacio entre cards para móviles */
             }
 
             .card {
-                width: 90%;
+                width: 90%; /* Usar un porcentaje del ancho disponible */
                 max-width: 350px;
                 padding: 2rem;
             }
@@ -325,6 +429,17 @@
             .contact-methods {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem; /* Ajustar el espacio entre métodos de contacto */
+            }
+            .contact-method {
+                 width: 80%; /* Hacer los botones de contacto más anchos en móvil */
+                 justify-content: center; /* Centrar el icono y el texto */
+                 padding: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+                gap: 1.5rem; /* Ajustar el espacio entre productos para móviles */
             }
         }
 
@@ -348,6 +463,14 @@
             .card h4 {
                 font-size: 1.5rem;
             }
+
+            .product-card h4 {
+                font-size: 1.6rem;
+            }
+            /* Asegurar que el padding del container no cause scroll en los anchos más pequeños */
+            .container {
+                padding: 0 1rem;
+            }
         }
     </style>
     <!-- Font Awesome para iconos, es bueno para un "premium" -->
@@ -365,6 +488,7 @@
             <ul>
                 <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
+                <li><a href="#galeria">Galería</a></li> <!-- Nuevo enlace para la galería -->
                 <li><a href="#contacto">Contacto</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
             </ul>
@@ -375,7 +499,7 @@
         <div class="container">
             <h2>Descubre la Belleza que Hay en Ti</h2>
             <p>Explora nuestra exclusiva colección de Bodys y Tops, diseñados para realzar tu estilo y comodidad.</p>
-            <a href="#productos" class="btn">Ver Productos</a>
+            <a href="#galeria" class="btn">Ver Productos</a>
         </div>
     </section>
 
@@ -399,13 +523,46 @@
         </div>
     </section>
 
+    <!-- Nueva sección para la galería de productos con imágenes -->
+    <section id="galeria" class="info-section">
+        <div class="container">
+            <h3>Nuestra Galería</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://i.ibb.co/0yVKJRT4/Generated-Image-February-27-2026-11-14-AM.png" alt="Body Rosa Elegante">
+                    <div class="product-card-content">
+                        <h4>Body Rosa</h4>
+                        <p>Body elegante en tono rosa pastel, ideal para un look sofisticado y cómodo. Talla única.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20rosa" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.ibb.co/2wRxS34/Generated-Image-February-27-2026-11-20-AM.png" alt="Top Blanco Moderno">
+                    <div class="product-card-content">
+                        <h4>Top Blanco</h4>
+                        <p>Top blanco de diseño moderno, perfecto para combinar con cualquier estilo. Fresco y versátil. Talla S, M, L.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20top%20blanco" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.ibb.co/fVRf2jd1/Generated-Image-February-27-2026-11-15-AM.png" alt="Body Negro Clásico">
+                    <div class="product-card-content">
+                        <h4>Body Negro</h4>
+                        <p>Clásico body negro, una prenda imprescindible en tu armario. Elegancia y ajuste perfecto. Talla única.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20negro" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="nosotros" class="owner-info">
         <div class="container">
             <h3>Sobre Ocean Beauty</h3>
             <p>Soy Rocio Guerra, la creadora y apasionada detrás de Ocean Beauty.</p>
             <p>Nuestra tienda online nace en San Carlos-Cojedes con la visión de ofrecer prendas de calidad que celebren la feminidad y el estilo único de cada mujer. Creemos que la belleza reside en la confianza y en cómo te sientes con lo que vistes.</p>
             <p>Gracias por formar parte de nuestra comunidad. ¡Te invitamos a explorar y encontrar tu pieza favorita!</p>
-            <p>También nos sigue y apoya: gabriel.rosales.37</p>
+            <p></p>
         </div>
     </section>
 
@@ -415,10 +572,10 @@
             <p>¿Tienes alguna pregunta, necesitas ayuda o quieres saber más sobre nuestras prendas?</p>
             <p>¡Estamos aquí para ti!</p>
             <div class="contact-methods">
-                <a href="https://www.instagram.com/ocean.beauty18/" target="_blank" class="contact-method">
+                <a href="https://www.instagram.com/ocean.beauty18?igsh=MWF2M3Y4Z2h5enpleQ==" target="_blank" class="contact-method">
                     <i class="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="contact-method"> <!-- Reemplaza XXXXXXXXXXX con el número de WhatsApp -->
+                <a href="https://wa.me/584220044056?text=Bien%20venidos%20" target="_blank" class="contact-method"> <!-- Reemplaza XXXXXXXXXXX con el número de WhatsApp -->
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="mailto:info@oceanbeauty.com" class="contact-method"> <!-- Reemplaza con un email real -->
@@ -430,7 +587,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Ocean Beauty. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Ocean Beauty. Todos los derechos reservados.</p>
             <p>Diseñado y creado por Rocio Guerra.</p>
         </div>
     </footer>
