@@ -3,91 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ocean Beauty - Tienda Online</title>
+    <title>Ocean Beauty - Tienda Online Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- VARIABLES CSS PERSONALIZADAS --- */
         :root {
-            --primary-color: #0d1e33; /* Azul oscuro del logo */
-            --secondary-color: #3b82f6; /* Un tono de azul para acentos */
-            --accent-color: #1abc9c; /* Verde/azul turquesa del logo */
-            --text-light: #f8f8f8;
-            --text-dark: #333;
-            --gradient-start: #3b82f6;
-            --gradient-end: #1abc9c;
+            --primary-color: #0D1E33; /* Azul oscuro del logo */
+            --secondary-color: #3B82F6; /* Azul vibrante para acentos */
+            --accent-color: #1ABC9C; /* Verde/azul turquesa del logo */
+            --text-light: #F8F8F8;
+            --text-dark: #2C3E50; /* Un gris oscuro más cálido */
+            --bg-light: #FFFFFF;
+            --bg-dark: #EAECEF; /* Un gris claro para secciones */
+            --gradient-start: #3B82F6;
+            --gradient-end: #1ABC9C;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --border-radius-card: 15px;
+            --transition-speed: 0.3s ease;
         }
 
-        /* --- NUEVAS REGLAS GLOBALES PARA EVITAR SCROLL HORIZONTAL --- */
-        html, body {
-            overflow-x: hidden; /* Evita el scroll horizontal en toda la página */
-            width: 100%; /* Asegura que el body no exceda el ancho del viewport */
-            margin: 0; /* Reinicia márgenes por si acaso */
-            padding: 0; /* Reinicia paddings por si acaso */
+        /* --- REINICIO Y ESTILOS GLOBALES --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
-        /* --- FIN DE NUEVAS REGLAS GLOBALES --- */
 
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* margin: 0;  Ya se movió a html, body */
-            /* padding: 0; Ya se movió a html, body */
-            background-color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
-            /* overflow-x: hidden; Ya se movió a html, body */
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1000;
+            overflow-x: hidden; /* Evita el scroll horizontal */
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
-            /* Añadir box-sizing para evitar problemas con padding */
-            box-sizing: border-box;
+        }
+
+        section {
+            padding: 5rem 0; /* Espaciado uniforme para secciones */
+        }
+
+        /* --- ESTILOS DE ENCABEZADO (HEADER) --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1000;
         }
 
         .logo-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .logo-section img {
-            max-width: 150px; /* Ajusta el tamaño del logo */
+            max-width: 160px;
             height: auto;
-            border-radius: 50%; /* Si quieres un efecto redondeado para el logo */
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 0 15px rgba(26, 188, 156, 0.6);
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(26, 188, 156, 0.6);
+            transition: transform var(--transition-speed);
+        }
+
+        .logo-section img:hover {
+            transform: scale(1.05) rotate(5deg);
         }
 
         .logo-section h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0.5rem 0 0;
             background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .logo-section p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin: 0;
-            color: #ccc;
+            color: #C0C0C0;
         }
 
+        /* --- ESTILOS DE NAVEGACIÓN (NAV) --- */
         nav {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         nav ul {
@@ -96,408 +115,774 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap; /* Para que los ítems se envuelvan en pantallas pequeñas */
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         nav ul li a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 1.15rem;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            transition: all var(--transition-speed);
+            z-index: -1;
+            opacity: 0;
+        }
+
+        nav ul li a:hover::before {
+            left: 0;
+            opacity: 1;
         }
 
         nav ul li a:hover, nav ul li a.active {
+            color: var(--primary-color);
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+        }
+        nav ul li a.active {
+             /* Estilo adicional para el link activo si no se hace hover */
             background-color: var(--accent-color);
             color: var(--primary-color);
         }
 
+
+        /* --- ESTILOS DE SECCIÓN HERO --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x800/2c3e50/ecf0f1?text=Descubre+Nuestra+Colección'); /* Placeholder para una imagen de hero */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.ibb.co/4wdwjZVZ/dfc77a9f-a2d2-460e-9f24-86c674d229cd.jpg'); /* Imagen de fondo premium */
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
             color: var(--text-light);
             text-align: center;
-            padding: 6rem 1.5rem;
-            position: relative;
+            padding: 8rem 1.5rem;
+            min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 500px;
-            /* Asegurar que el contenido del hero no cause desbordamiento */
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 0.9rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
-        }
-
-        .btn:hover {
-            background-color: #16a085;
-            transform: translateY(-3px);
-        }
-
-        .info-section {
-            background-color: var(--text-light);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .info-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
             position: relative;
-            display: inline-block;
+            overflow: hidden; /* Asegura que el contenido no se desborde */
         }
 
-        .info-section h3::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .info-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            /* Asegurar que los cards no se desborden por el padding */
-            box-sizing: border-box;
-            padding: 0 1rem; /* Añadir un pequeño padding para móviles si los cards no tienen margen */
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            width: 300px;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #eee;
-            /* Asegurar que el card no se desborde */
-            box-sizing: border-box;
-            max-width: 100%; /* Imprescindible para evitar desbordamiento */
-        }
-
-        .card::before {
+        .hero::before { /* Capa sutil de patrón */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2dmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiPgo8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMyIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxLjUiIGZpbGw9IiNGRkZGRkYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+Cjwvc3ZnPg==');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            color: var(--primary-color);
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all var(--transition-speed);
+            box-shadow: 0 8px 25px rgba(26, 188, 156, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: skewX(-30deg);
+            transition: all var(--transition-speed);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(26, 188, 156, 0.6);
+            color: var(--text-light); /* Cambiar color de texto en hover para contraste */
+        }
+
+        /* --- Estilo para el botón "Desplázate para descubrir" --- */
+        .scroll-down-btn {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            animation: bounce 2s infinite;
+            opacity: 0.8;
+            transition: opacity var(--transition-speed);
+            z-index: 10;
+        }
+
+        .scroll-down-btn:hover {
+            opacity: 1;
+        }
+
+        .scroll-down-btn i {
+            font-size: 2rem;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* --- ESTILOS GENERALES DE SECCIÓN --- */
+        .info-section, .products-section, .owner-section, .contact-section {
+            background-color: var(--bg-light);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .info-section.alt-bg { /* Fondo alternativo para algunas secciones */
+            background-color: var(--bg-dark);
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            text-transform: capitalize; /* Capitaliza la primera letra de cada palabra */
+        }
+
+        h3::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
             background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            margin: 15px auto 0;
+            border-radius: 3px;
         }
 
-        .card:hover {
+        /* --- NUEVA SECCIÓN "POR QUÉ ELEGIRNOS" --- */
+        .why-choose-us-grid { /* Cambié el nombre de la clase para evitar conflicto si se usara `container` de nuevo */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border-radius: var(--border-radius-card);
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            text-align: center;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border: 1px solid #eee;
+        }
+
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px var(--shadow-medium);
         }
 
-        .card h4 {
-            font-size: 1.8rem;
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            display: block;
+            text-shadow: 0 0 10px rgba(26, 188, 156, 0.3);
+        }
+
+        .feature-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             color: var(--secondary-color);
             margin-top: 0;
             margin-bottom: 1rem;
         }
 
-        .card p {
-            font-size: 1rem;
+        .feature-card p {
+            font-size: 1.05rem;
             color: #555;
         }
 
-        /* Estilos para la nueva sección de productos */
+        /* --- SECCIÓN GALERÍA DE PRODUCTOS --- */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
             margin-top: 3rem;
-            /* Asegurar que el grid no se desborde */
-            box-sizing: border-box;
-            padding: 0 1rem; /* Añadir un pequeño padding si no hay margen en los items */
         }
 
         .product-card {
             background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-card);
+            box-shadow: 0 10px 30px var(--shadow-light);
             overflow: hidden;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             border: 1px solid #eee;
-            /* Asegurar que el card no se desborde */
-            box-sizing: border-box;
-            max-width: 100%; /* Imprescindible para evitar desbordamiento */
+            position: relative;
+        }
+
+        .product-card::before { /* Sombra en la parte superior */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            opacity: 0.8;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 18px 45px var(--shadow-medium);
         }
 
         .product-card img {
             width: 100%;
-            height: 300px; /* Altura fija para las imágenes */
-            object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+            height: 350px; /* Altura fija para uniformidad */
+            object-fit: cover;
             border-bottom: 1px solid #eee;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
         }
 
         .product-card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .product-card h4 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
             margin-top: 0;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .product-card p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #666;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+            min-height: 60px; /* Para que todos los productos tengan altura similar */
         }
 
         .product-card .btn {
-            background-color: var(--secondary-color);
+            background: var(--secondary-color);
             color: var(--text-light);
-            padding: 0.7rem 1.5rem;
-            font-size: 0.95rem;
-            border-radius: 20px;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all var(--transition-speed);
         }
 
         .product-card .btn:hover {
-            background-color: #2a61c7;
-            transform: translateY(-2px);
+            background-color: #2A61C7;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
         }
 
-
-        .owner-info {
+        /* --- SECCIÓN SOBRE NOSOTROS (OWNER INFO) --- */
+        .owner-section {
             background-color: var(--primary-color);
             color: var(--text-light);
-            padding: 3rem 1.5rem;
-            text-align: center;
-            /* Asegurar que el owner-info no se desborde */
-            box-sizing: border-box;
-            width: 100%;
+            padding: 6rem 0;
         }
 
-        .owner-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
+        .owner-section h3 {
             color: var(--accent-color);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
         }
 
         .owner-profile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .owner-profile img {
-            width: 180px; /* Tamaño de la imagen de Rocio */
-            height: 180px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 50%; /* Hacer la imagen redonda */
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 20px rgba(26, 188, 156, 0.7);
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 0 25px rgba(26, 188, 156, 0.8);
+            transition: transform var(--transition-speed);
         }
 
-        .owner-info p {
+        .owner-profile img:hover {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .owner-section p {
             font-size: 1.2rem;
-            margin-bottom: 1rem;
-            max-width: 800px; /* Limitar el ancho del texto para mejor legibilidad */
+            margin-bottom: 1.5rem;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            color: #E0E0E0;
+            font-weight: 300;
+        }
+
+        /* --- NUEVA SECCIÓN: TESTIMONIOS (CARRUSEL BÁSICO) --- */
+        .testimonials-section {
+            background-color: var(--bg-dark); /* Fondo alternativo */
+            padding: 6rem 0;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            overflow: hidden;
+            border-radius: var(--border-radius-card);
+            box-shadow: 0 15px 40px var(--shadow-light);
+            padding: 2.5rem;
+            background-color: var(--bg-light);
+        }
+
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .testimonial-item {
+            min-width: 100%;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimonial-item blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin: 0 0 1.5rem;
+            line-height: 1.5;
+            quotes: "“" "”" "‘" "’"; /* Personaliza comillas */
+        }
+
+        .testimonial-item blockquote::before {
+            content: open-quote;
+            font-size: 3rem;
+            line-height: 0;
+            vertical-align: -0.4em;
+            color: var(--accent-color);
+            margin-right: 0.1em;
+        }
+
+        .testimonial-item blockquote::after {
+            content: close-quote;
+            font-size: 3rem;
+            line-height: 0;
+            vertical-align: -0.4em;
+            color: var(--accent-color);
+            margin-left: 0.1em;
+        }
+
+        .testimonial-item .author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-top: 1rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-controls button {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-controls button:hover {
+            background-color: #2A61C7;
+            transform: scale(1.1);
+        }
+
+
+        /* --- NUEVA SECCIÓN: HISTORIA EN NÚMEROS (CONTADORES ANIMADOS) --- */
+        .numbers-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .numbers-section h3 {
+            color: var(--accent-color);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .number-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-card);
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+            z-index: -1;
+        }
+
+        .number-item:hover::before {
+            opacity: 0.15;
+        }
+
+        .number-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .number-item i {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 15px rgba(26, 188, 156, 0.6);
+        }
+
+        .number-item .count {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .number-item p {
+            font-size: 1.3rem;
+            color: #C0C0C0;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* --- SECCIÓN DE CONTACTO --- */
+        .contact-section {
+            background-color: var(--bg-light);
+            padding: 6rem 0;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #555;
         }
 
         .contact-methods {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
-            /* Asegurar que los métodos de contacto no se desborden */
-            box-sizing: border-box;
-            padding: 0 1rem;
+            margin-top: 3rem;
         }
 
         .contact-method {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            transition: all var(--transition-speed);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Asegurar que el método de contacto no se desborde */
-            box-sizing: border-box;
-            max-width: 100%; /* Para que el botón no se estire más de lo debido */
+            gap: 0.75rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            min-width: 220px;
+            justify-content: center;
         }
 
         .contact-method:hover {
-            background-color: #16a085;
-            transform: translateY(-3px);
-            color: var(--text-light);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            opacity: 0.9;
         }
 
         .contact-method i {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
+        /* --- PIE DE PÁGINA (FOOTER) --- */
         footer {
             background-color: #222;
             color: #bbb;
             text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
-            /* Asegurar que el footer no se desborde */
-            box-sizing: border-box;
-            width: 100%;
+            padding: 3rem 0;
+            font-size: 0.95rem;
+            border-top: 5px solid var(--accent-color);
         }
 
         footer p {
-            margin: 0.5rem 0;
+            margin: 0.7rem 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* --- BOTÓN "VOLVER ARRIBA" --- */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all var(--transition-speed);
+            opacity: 0.8;
+        }
+
+        #backToTopBtn:hover {
+            opacity: 1;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* --- DISEÑO RESPONSIVO (MEDIA QUERIES) --- */
+        @media (max-width: 992px) {
             .hero h2 {
-                font-size: 2.8rem;
+                font-size: 3.8rem;
             }
-
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
-
-            .info-section h3 {
-                font-size: 2.2rem;
+            h3 {
+                font-size: 3rem;
             }
-
-            .info-cards {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem; /* Ajustar el espacio entre cards para móviles */
+            .numbers-grid, .product-grid, .why-choose-us-grid { /* Cambiado aquí */
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
             }
-
-            .card {
-                width: 90%; /* Usar un porcentaje del ancho disponible */
-                max-width: 350px;
+            .feature-card, .number-item, .product-card {
                 padding: 2rem;
             }
+        }
 
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0;
+            }
+            header {
+                padding: 1rem 0;
+            }
+            .logo-section h1 {
+                font-size: 2.5rem;
+            }
             nav ul {
                 flex-direction: column;
                 gap: 0.8rem;
+                margin-top: 1rem;
             }
-
             nav ul li a {
-                padding: 0.8rem 1rem;
-                display: block;
+                padding: 0.6rem 1rem;
+                font-size: 1.05rem;
             }
-
+            .hero {
+                padding: 6rem 1.5rem;
+                min-height: 450px;
+            }
+            .hero h2 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+            h3 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+            .feature-card i {
+                font-size: 3rem;
+            }
+            .feature-card h4 {
+                font-size: 1.8rem;
+            }
+            .product-grid {
+                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+                gap: 2.5rem;
+            }
+            .product-card img {
+                height: 300px;
+            }
+            .owner-section p, .contact-section p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
             .contact-methods {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem; /* Ajustar el espacio entre métodos de contacto */
+                gap: 1.2rem;
             }
             .contact-method {
-                 width: 80%; /* Hacer los botones de contacto más anchos en móvil */
-                 justify-content: center; /* Centrar el icono y el texto */
-                 padding: 1rem;
+                width: 90%;
+                max-width: 300px;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
-
-            .product-grid {
-                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-                gap: 1.5rem; /* Ajustar el espacio entre productos para móviles */
+            .testimonial-item blockquote {
+                font-size: 1.2rem;
+            }
+            .numbers-grid {
+                grid-template-columns: 1fr;
+            }
+            .number-item .count {
+                font-size: 3.8rem;
+            }
+            .number-item p {
+                font-size: 1.1rem;
+            }
+            #backToTopBtn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .scroll-down-btn {
+                bottom: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .logo-section h1 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .info-section h3 {
-                font-size: 1.8rem;
-            }
-
-            .card h4 {
-                font-size: 1.5rem;
-            }
-
-            .product-card h4 {
-                font-size: 1.6rem;
-            }
-            /* Asegurar que el padding del container no cause scroll en los anchos más pequeños */
             .container {
                 padding: 0 1rem;
             }
+            .logo-section h1 {
+                font-size: 2rem;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            h3 {
+                font-size: 2rem;
+            }
+            .feature-card, .product-card, .number-item, .testimonial-slider {
+                padding: 1.5rem;
+            }
+            .product-card img {
+                height: 250px;
+            }
+            .number-item .count {
+                font-size: 3rem;
+            }
+            .number-item p {
+                font-size: 1rem;
+            }
         }
     </style>
-    <!-- Font Awesome para iconos, es bueno para un "premium" -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container logo-section">
-            <!-- Asumo que el logo tiene un fondo transparente y lo he optimizado para web -->
             <img src="https://i.ibb.co/MyxfMf53/Photo-Room-20260227-095052.png" alt="Ocean Beauty Logo"> 
             <h1>Ocean Beauty</h1>
             <p>San Carlos-Cojedes</p>
@@ -506,9 +891,10 @@
             <ul>
                 <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#galeria">Galería</a></li> <!-- Nuevo enlace para la galería -->
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#testimonios">Testimonios</a></li> 
                 <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -516,90 +902,184 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h2>Descubre la Belleza que Hay en Ti</h2>
-            <p>Explora nuestra exclusiva colección de Bodys y Tops, diseñados para realzar tu estilo y comodidad.</p>
-            <a href="#galeria" class="btn">Ver Productos</a>
+            <p>Explora nuestra exclusiva colección de Bodys y Tops, cuidadosamente seleccionados para realzar tu estilo y comodidad.</p>
+            <a href="#galeria" class="btn">Ver Colección</a>
+            <a href="#why-choose-us" class="scroll-down-btn">
+                <span>Desplázate para descubrir</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
-    <section id="productos" class="info-section">
+    <!-- Sección: Por Qué Elegirnos -->
+    <section id="why-choose-us" class="info-section alt-bg">
         <div class="container">
-            <h3>Nuestros Productos Estrellas</h3>
-            <div class="info-cards">
-                <div class="card">
-                    <h4>Bodys Elegantes</h4>
-                    <p>Una selección premium de bodys que se adaptan a tu figura, perfectos para cualquier ocasión. Comodidad y estilo en cada prenda.</p>
+            <h3>Por Qué Elegir Ocean Beauty</h3>
+            <div class="why-choose-us-grid">
+                <div class="feature-card">
+                    <i class="fas fa-gem"></i>
+                    <h4>Selección Premium</h4>
+                    <p>Elegimos minuciosamente cada prenda por su tela, diseño y acabados, garantizando calidad y estilo.</p>
                 </div>
-                <div class="card">
-                    <h4>Tops de Tendencia</h4>
-                    <p>Mantente a la moda con nuestros tops exclusivos. Diseños innovadores y telas de alta calidad para un look impecable.</p>
+                <div class="feature-card">
+                    <i class="fas fa-palette"></i>
+                    <h4>Variedad y Tendencia</h4>
+                    <p>Ofrecemos piezas únicas que siguen las últimas tendencias, seleccionadas para destacar tu estilo personal.</p>
                 </div>
-                <div class="card">
-                    <h4>Colecciones Exclusivas</h4>
-                    <p>Descubre prendas únicas que no encontrarás en otro lugar. Moda hecha con pasión y dedicación.</p>
+                <div class="feature-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Envío Rápido</h4>
+                    <p>Entregas eficientes para que disfrutes de tus nuevas prendas sin largas esperas.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Atención Personalizada</h4>
+                    <p>Estamos aquí para asesorarte y resolver tus dudas con un servicio cercano y amable.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Nueva sección para la galería de productos con imágenes -->
+    <!-- Sección de Productos con imágenes -->
     <section id="galeria" class="info-section">
         <div class="container">
-            <h3>Nuestra Galería</h3>
+            <h3>Nuestra Galería de Productos</h3>
             <div class="product-grid">
                 <div class="product-card">
                     <img src="https://i.ibb.co/0yVKJRT4/Generated-Image-February-27-2026-11-14-AM.png" alt="Body Rosa Elegante">
                     <div class="product-card-content">
-                        <h4>Body Rosa</h4>
-                        <p>Body elegante en tono rosa pastel, ideal para un look sofisticado y cómodo. Talla única.</p>
-                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20rosa" target="_blank" class="btn">Comprar</a>
+                        <h4>Body Rosa Elegante</h4>
+                        <p>Body sofisticado en tono rosa pastel, ideal para un look chic y cómodo. Talla única, ajuste perfecto.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20rosa" target="_blank" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <img src="https://i.ibb.co/2wRxS34/Generated-Image-February-27-2026-11-20-AM.png" alt="Top Blanco Moderno">
                     <div class="product-card-content">
-                        <h4>Top Blanco</h4>
-                        <p>Top blanco de diseño moderno, perfecto para combinar con cualquier estilo. Fresco y versátil. Talla S, M, L.</p>
-                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20top%20blanco" target="_blank" class="btn">Comprar</a>
+                        <h4>Top Blanco Versátil</h4>
+                        <p>Top de diseño moderno y minimalista, perfecto para cualquier combinación. Fresco y adaptable. Talla S, M, L.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20top%20blanco" target="_blank" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <img src="https://i.ibb.co/fVRf2jd1/Generated-Image-February-27-2026-11-15-AM.png" alt="Body Negro Clásico">
                     <div class="product-card-content">
-                        <h4>Body Negro</h4>
-                        <p>Clásico body negro, una prenda imprescindible en tu armario. Elegancia y ajuste perfecto. Talla única.</p>
-                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20negro" target="_blank" class="btn">Comprar</a>
+                        <h4>Body Negro Imprescindible</h4>
+                        <p>Clásico body negro, una prenda atemporal que no puede faltar en tu armario. Elegancia y confort.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20negro" target="_blank" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <!-- Nueva imagen de producto -->
+                    <img src="https://i.ibb.co/B4q0k12/fashion-woman-wearing-stylish-sleeveless-top-with-denim-jeans-fashion-summer-outfit-casual-look-stre.jpg" alt="Top Denim Casual">
+                    <div class="product-card-content">
+                        <h4>Top Casual Denim</h4>
+                        <p>Top estilo denim, ideal para un look casual y moderno. Confort y tendencia para el día a día. Talla M, L.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20top%20denim" target="_blank" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <!-- Nueva imagen de producto -->
+                    <img src="https://i.ibb.co/F8K5D77/woman-fashion-wearing-jeans-and-crop-top.jpg" alt="Crop Top Verano">
+                    <div class="product-card-content">
+                        <h4>Crop Top Veraniego</h4>
+                        <p>Crop top fresco y ligero, perfecto para los días soleados. Combínalo con tus jeans favoritos. Talla S, M.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20crop%20top%20veraniego" target="_blank" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <!-- Nueva imagen de producto -->
+                    <img src="https://i.ibb.co/0yFj2tN/pretty-curly-woman-standing-white-dress.jpg" alt="Body Blanco Fresco">
+                    <div class="product-card-content">
+                        <h4>Body Blanco Minimalista</h4>
+                        <p>Body blanco, básico y elegante. Ideal para crear looks minimalistas o como base. Talla única.</p>
+                        <a href="https://wa.me/584220044056?text=Quiero%20informaci%C3%B3n%20sobre%20el%20body%20blanco" target="_blank" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="nosotros" class="owner-info">
+    <!-- Sección: Nuestra Historia en Números (Contadores) -->
+    <section class="numbers-section">
         <div class="container">
-            <h3>Sobre Ocean Beauty</h3>
-            <div class="owner-profile">
-                <!-- Aquí se ha añadido la imagen de Rocio -->
-                <img src="https://i.ibb.co/Kpmf7vfY/IMG-20260227-WA0011.jpg" alt="Rocio Guerra">
-                <p>Soy Rocio Guerra, la creadora y apasionada detrás de Ocean Beauty.</p>
+            <h3>Nuestra Historia en Números</h3>
+            <div class="numbers-grid">
+                <div class="number-item">
+                    <i class="fas fa-users"></i>
+                    <p class="count" data-target="1500">0</p>
+                    <p>Clientes Satisfechas</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-tshirt"></i>
+                    <p class="count" data-target="250">0</p>
+                    <p>Prendas Exclusivas en Catálogo</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-star"></i>
+                    <p class="count" data-target="5">0</p>
+                    <p>Estrellas de Calidad</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-box-open"></i>
+                    <p class="count" data-target="1000">0</p>
+                    <p>Envíos Realizados</p>
+                </div>
             </div>
-            <p>Nuestra tienda online nace en San Carlos-Cojedes con la visión de ofrecer prendas de calidad que celebren la feminidad y el estilo único de cada mujer. Creemos que la belleza reside en la confianza y en cómo te sientes con lo que vistes.</p>
-            <p>Gracias por formar parte de nuestra comunidad. ¡Te invitamos a explorar y encontrar tu pieza favorita!</p>
         </div>
     </section>
 
-    <section id="contacto" class="info-section">
+    <!-- Sección: Testimonios de Clientes -->
+    <section id="testimonios" class="testimonials-section">
         <div class="container">
-            <h3>Contáctanos</h3>
-            <p>¿Tienes alguna pregunta, necesitas ayuda o quieres saber más sobre nuestras prendas?</p>
-            <p>¡Estamos aquí para ti!</p>
+            <h3>Lo Que Dicen Nuestras Clientes</h3>
+            <div class="testimonial-slider">
+                <div class="testimonial-wrapper">
+                    <div class="testimonial-item">
+                        <blockquote>"¡Absolutamente amo mi nuevo body de Ocean Beauty! La calidad es increíble y me siento muy cómoda y elegante. El envío fue súper rápido."</blockquote>
+                        <p class="author">- María G.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <blockquote>"Los tops son preciosos y súper originales. Siempre encuentro algo diferente y que se ajusta a mi estilo. ¡Ya soy clienta habitual!"</blockquote>
+                        <p class="author">- Carla P.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <blockquote>"Desde que descubrí Ocean Beauty, no compro en otro lugar. La atención es excelente y la ropa es de ensueño. ¡Totalmente recomendado!"</blockquote>
+                        <p class="author">- Sofía M.</p>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="owner-section">
+        <div class="container">
+            <h3>Sobre Ocean Beauty</h3>
+            <div class="owner-profile">
+                <img src="https://i.ibb.co/Kpmf7vfY/IMG-20260227-WA0011.jpg" alt="Rocio Guerra">
+                <p>Soy Rocio Guerra, la fundadora y apasionada detrás de Ocean Beauty.</p>
+            </div>
+            <p>Nuestra tienda online nace en San Carlos-Cojedes con la visión de ofrecer una cuidadosa selección de prendas de calidad que celebren la feminidad y el estilo único de cada mujer. Creemos que la belleza reside en la confianza y en cómo te sientes con lo que vistes. Cada pieza es elegida con amor, pensando en la mujer moderna que valora la exclusividad y la comodidad.</p>
+            <p>Gracias por formar parte de nuestra comunidad y permitirnos ser parte de tu estilo. ¡Te invitamos a explorar nuestra colección y encontrar tu pieza favorita!</p>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h3>Contáctanos y Síguenos</h3>
+            <p>¿Tienes alguna pregunta, necesitas ayuda o simplemente quieres saludar? ¡Estamos aquí para ti! Conéctate con nosotros en nuestras redes.</p>
             <div class="contact-methods">
                 <a href="https://www.instagram.com/ocean.beauty18?igsh=MWF2M3Y4Z2h5enpleQ==" target="_blank" class="contact-method">
                     <i class="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="https://wa.me/584220044056?text=Bien%20venidos%20" target="_blank" class="contact-method"> <!-- Reemplaza XXXXXXXXXXX con el número de WhatsApp -->
+                <a href="https://wa.me/584220044056?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20Ocean%20Beauty." target="_blank" class="contact-method">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="mailto:info@oceanbeauty.com" class="contact-method"> <!-- Reemplaza con un email real -->
+                <a href="mailto:info@oceanbeauty.com" class="contact-method">
                     <i class="fas fa-envelope"></i> Email
                 </a>
             </div>
@@ -609,8 +1089,133 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Ocean Beauty. Todos los derechos reservados.</p>
-            <p>Diseñado y creado por Rocio Guerra.</p>
+            <p>Con amor, para ti.</p> <!-- Cambié la frase para que no suene a "diseñador" -->
         </div>
     </footer>
+
+    <!-- Botón "Volver Arriba" -->
+    <button id="backToTopBtn" title="Ir arriba"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navegación Activa ---
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // --- Scroll Suave ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // --- Botón Volver Arriba ---
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // --- Contadores Animados ---
+            const counters = document.querySelectorAll('.count');
+            const speed = 200; // La velocidad de la animación
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / speed;
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            };
+
+            const checkCounters = () => {
+                counters.forEach(counter => {
+                    const section = counter.closest('.numbers-section');
+                    if (section && isElementInViewport(section) && !counter.classList.contains('animated')) {
+                        animateCounter(counter);
+                        counter.classList.add('animated'); // Marca como animado para no repetir
+                    }
+                });
+            };
+
+            // Función auxiliar para saber si un elemento está en el viewport
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            };
+
+            window.addEventListener('scroll', checkCounters);
+            checkCounters(); // Comprobar al cargar la página por si ya están visibles
+
+
+            // --- Carrusel de Testimonios ---
+            const testimonialWrapper = document.querySelector('.testimonial-wrapper');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            let currentIndex = 0;
+
+            const updateSlider = () => {
+                const itemWidth = testimonialItems[0].clientWidth; // Ancho de un testimonio
+                testimonialWrapper.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+            };
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonialItems.length - 1;
+                updateSlider();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            });
+
+            // Para asegurar que el slider se ajusta si cambia el tamaño de la ventana
+            window.addEventListener('resize', updateSlider);
+            updateSlider(); // Inicializar la posición del slider
+
+            // Autoplay (opcional)
+            let autoSlide = setInterval(() => {
+                currentIndex = (currentIndex < testimonialItems.length - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            }, 7000); // Cambia cada 7 segundos
+
+            // Pausar autoplay al interactuar con botones
+            prevBtn.addEventListener('click', () => { clearInterval(autoSlide); });
+            nextBtn.addEventListener('click', () => { clearInterval(autoSlide); });
+
+        });
+    </script>
 </body>
 </html>
